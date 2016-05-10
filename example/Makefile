@@ -9,7 +9,7 @@ build:
 	@echo "Build ID: $$(cat .last_build)"
 
 test:
-	@docker run -ti --rm $$(cat .last_build) /bin/bash -c 'curl -s -o /dev/null -w "%{http_code}" http://www.example.org/'
+	@docker run -ti $$(cat .last_build) /bin/bash -c 'curl -s -o /dev/null -w "%{http_code}" http://www.example.org/'
 
 tag:
 	@docker tag $$(cat .last_build) $(account)/$(project):$$(cat .last_build)
